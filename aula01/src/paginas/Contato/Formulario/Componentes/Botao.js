@@ -6,12 +6,20 @@ function Botao (props) {
 if (props.desabilitado) {
     classes += ' botao--desabilitado'
 }
+
         const handleClick  = (evento) => {
             evento.preventDefault()
-            props.mudaConteudo('props.pagina')
+            if (props.type === 'submit'){
+                props.onSubmit()
+            }
+            props.mudaConteudo(props.pagina)
         }
+
     return (
-        <button onClick ={handleClick} className = {classes}> 
+        <button onClick ={handleClick} 
+        className = {classes} 
+        type= {props.type}
+        > 
         {props.children}
         </button>
     

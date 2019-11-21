@@ -13,7 +13,7 @@ class Contato extends React.Component {
         }
     }
 
-    handleMudaContato = (proximaPagina) => {
+        handleMudaConteudo = (proximaPagina) => {
         this.setState({
             conteudo:proximaPagina
              })
@@ -29,7 +29,7 @@ class Contato extends React.Component {
                 />
                 }
                 {
-                    this.state.conteudo === 'Sucesso' &&
+                    this.state.conteudo === 'sucesso' &&
                     <Sucesso
                     mudaConteudo={this.handleMudaConteudo}
                 />

@@ -14,18 +14,20 @@ function CaixaTexto (props) {
                     return 
         }
 
-    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        
-        if (props.type === 'email' && !regex.test(value))
-        props.onChange(name,value, 'Digite um e-mail válido')
+       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if(props.type === 'email' && !regex.test(value)) {
+      props.onChange(name, value, 'Digite um email válido')
+      return
     }
+    props.onChange(name, value)
+  }
     
     return (
         <input 
         name={props.name}
         type='text'
         className = 'campo'
-        placeHolder = {props.placeHolder}
+        placeholder = {props.placeholder}
         onChange= {validaCampo}
         />
     )

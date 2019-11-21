@@ -6,7 +6,7 @@ class Formulario extends React.Component{
     constructor (props) {
         super (props)
         this.state = {
-            nome: {
+            name: {
                 valor: '',
                 erro: ''
             },
@@ -35,15 +35,23 @@ handleChange = ( nomeDoCampo,valorDoCampo,erroDoCampo = '') =>{
 
 estaDesabilitado = () => {
     return (
-        !this.state.nome.valor ||
-        this.state.nome.erro ||
+        !this.state.name.valor ||
+        this.state.name.erro ||
         !this.state.email.valor ||
         this.state.email.erro ||
         !this.state.pais.valor ||
-        this.state.pais.erro ||
-        !this.state.mensagem.valor ||
         this.state.pais.erro
     )
+}
+
+handleSubmit = () => {
+    const novoContato = {
+        name: this.state.name.valor,
+        email: this.state.email.valor,
+        pais: this.state.pais.valor,
+        mensagem: this.state.mensagem.valor
+        
+    }
 }
 
     render() {
@@ -51,12 +59,12 @@ estaDesabilitado = () => {
         return (
             <div className = 'pagina'>
                 <h2>Entre em contato conosco!</h2>
-                    <form className = 'formulario'>
+                    <form className='formulario' id='form1' onSubmit={this.handleSubmit}>
                         
-                    <Grupo erro = {this.state.nome.erro}>
-                        <Grupo.Legenda htmlFor = 'nome'></Grupo.Legenda>
+                    <Grupo erro = {this.state.name.erro}>
+                        <Grupo.Legenda htmlFor = 'name'></Grupo.Legenda>
                         <Grupo.CaixaTexto
-                        name='nome'
+                        name='name'
                         placeHolder = 'Digite seu nome'
                         onChange = {this.handleChange}
                         minLength = {10} 
@@ -99,7 +107,10 @@ estaDesabilitado = () => {
                         <Botao
                             desabilitado = {verificarBotao}
                             mudaConteudo = {this.props.mudaConteudo}
+                            onSubmit={this.handleSubmit}
                             pagina= 'sucesso'
+                            type='submit'
+
                         >
                         Enviar
                         </Botao>
