@@ -11,3 +11,4 @@ export function getMensagens () {
   const url = '/reprograma/T8-React-II/mensagens'
   return protocolo.get(url)
 }
+
